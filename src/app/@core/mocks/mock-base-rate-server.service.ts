@@ -18,8 +18,8 @@ export class MockBaseRateServerService {
   private _db: {[fromRateKey: string]: MockDbEntry} = MockDb;
   constructor() { }
 
-  getRate$(fromRate: string, toRate: string): Observable<number> { // mocking the original OER Api
-    return of(this._db[fromRate].rates[toRate][0].rate).pipe(delay(Math.floor(Math.random() * (450 - 100 + 1)) + 100));
+  getRate$(fromRate: string, toRate: string): Observable<number> { // mocking the original OER Api - also I've mixed up the data generation
+    return of(this._db[toRate].rates[fromRate][0].rate).pipe(delay(Math.floor(Math.random() * (450 - 100 + 1)) + 100));
   }
 
   getCurrencies$() { // mocking the original OER Api
