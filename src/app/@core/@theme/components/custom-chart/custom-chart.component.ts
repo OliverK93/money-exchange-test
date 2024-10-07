@@ -8,8 +8,4 @@ import {CustomChartConfig} from "./custom-chart-config";
 })
 export class CustomChartComponent {
   @Input() config!: CustomChartConfig;
-
-  ngOnInit() {
-    console.log(this.config);
-  }
 }

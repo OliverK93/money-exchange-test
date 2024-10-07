@@ -11,7 +11,6 @@ export class CurrencyFormatPipe implements PipeTransform {
   }
 
   static transform(value: string): string {
-    console.log(isNaN(parseFloat(value)));
     if (value === null || value === undefined || value === '' || isNaN(parseFloat(value))) {
       return '';
     }
@@ -21,7 +20,6 @@ export class CurrencyFormatPipe implements PipeTransform {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2
     }).format(parseInt(value.replace(/,/g, '')));
-    console.log(formattedValue);
     return formattedValue
   }
 
