@@ -28410,7 +28410,7 @@ export const MockDb = {
     }
   },
   "CRC": {
-    "name": "Costa Rican Col?n",
+    "name": "Costa Rican Colon",
     "rates": {
       "AED": [
         {
@@ -61555,7 +61555,7 @@ export const MockDb = {
     }
   },
   "ISK": {
-    "name": "Icelandic Kr?na",
+    "name": "Icelandic Krona",
     "rates": {
       "AED": [
         {
@@ -95647,7 +95647,7 @@ export const MockDb = {
     }
   },
   "NIO": {
-    "name": "Nicaraguan C?rdoba",
+    "name": "Nicaraguan Cordoba",
     "rates": {
       "AED": [
         {
@@ -122163,7 +122163,7 @@ export const MockDb = {
     }
   },
   "STN": {
-    "name": "S?o Tom? and Pr?ncipe Dobra",
+    "name": "Sao Tomean Dobra",
     "rates": {
       "AED": [
         {
@@ -123110,7 +123110,7 @@ export const MockDb = {
     }
   },
   "SVC": {
-    "name": "Salvadoran Col?n",
+    "name": "Salvadoran Colon",
     "rates": {
       "AED": [
         {
@@ -139209,7 +139209,7 @@ export const MockDb = {
     }
   },
   "VES": {
-    "name": "Venezuelan Bol?var Soberano",
+    "name": "Venezuelan Bolivar Soberano",
     "rates": {
       "AED": [
         {
