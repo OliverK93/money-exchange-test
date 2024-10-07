@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.spinner {
+  border: 3px solid $secondary;
+  border-top: 3px solid $primary;
+  border-radius: 50%;
+  animation: spin 2s cubic-bezier(0.69,-0.11, 0.58, 1) infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

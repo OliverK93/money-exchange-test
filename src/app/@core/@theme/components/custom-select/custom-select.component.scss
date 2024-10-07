@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+@import "@ng-select/ng-select/themes/default.theme.css";
+
+.custom-select {
+  @include input-baseclass;
+
+  .option-tmp {
+    border-top: $base-border-size * 0.5 solid $secondary;
+  }
+}

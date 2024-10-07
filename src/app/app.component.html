@@ -1,0 +1,88 @@
+<div class="container d-flex align-items-center">
+  <app-card class="flex-grow-1">
+    <h1 class="mb-4">Monexchange {{'100342343' | currencyFormat}}</h1>
+    <div class="row mb-n4">
+      <div class="col-lg-4 d-flex align-items-end">
+          <app-custom-select *ngIf="fromCurrencySelectConfig.customSelectData"
+                             class="flex-grow-1 mb-4"
+                             [(ngModel)]="baseCurrencyExchangeDetails.fromCurrency"
+                             (ngModelChange)="onCurrencyChange()"
+                             [config]="fromCurrencySelectConfig"
+                             [@nudgeElement]="nudges?.fromCurrencyId">
+          </app-custom-select>
+      </div>
+      <div class="col-lg-1 d-flex align-items-end justify-content-center mb-4">
+          <button (click)="swapCurrencies()" class="btn btn-outline-primary btn-circle btn-sm">
+            <img src="../assets/swap.svg" class="icon">
+          </button>
+      </div>
+      <app-custom-select *ngIf="toCurrencySelectConfig.customSelectData"
+                         class="col-lg-4 mb-4"
+                         [(ngModel)]="baseCurrencyExchangeDetails.toCurrency"
+                         (ngModelChange)="onCurrencyChange()"
+                         [config]="toCurrencySelectConfig"
+                         [@nudgeElement]="nudges?.toCurrencyId">
+      </app-custom-select>
+      <div class="col-lg-3 d-flex align-items-end mb-4">
+        <app-custom-input class="flex-grow-1 mr-2"
+                          [(ngModel)]="baseCurrencyExchangeDetails.amount"
+                          [config]="amountInputConfig"
+                          [@nudgeElement]="nudges?.amount">
+        </app-custom-input>
+        <button class="btn btn-light btn-sm"
+                [@disableElement]="isButtonDisabled"
+                [disabled]="isButtonDisabled"
+                (click)="calculateCosts()"
+                (mouseenter)="getNudged(true)"
+                (mouseleave)="getNudged(false)">
+          Convert
+        </button>
+      </div>
+    </div>
+    <div class="row mt-4 mb-n4 align-items-stretch">
+      <div class="col-lg-6 mb-4 d-flex flex-grow-1">
+        <app-card *ngIf="rateRequestHelper.status" @fadeInOut [disabled]="rateRequestHelper.isPending" class="d-flex flex-column justify-content-between flex-grow-1">
+          <div>
+            <h3 class="card-header mb-2">Converting {{calculatedCurrencyExchangeDetails.fromCurrency.label}} to {{calculatedCurrencyExchangeDetails.toCurrency.label}}</h3>
+            <ng-container *ngIf="!rateRequestHelper.isPending && currencyExchangeResults; else spinner">
+                <h4 class="mb-1">{{calculatedCurrencyExchangeDetails.amount}} {{calculatedCurrencyExchangeDetails.fromCurrency.name}}(s) = </h4>
+                <div>
+                  <ng-container *ngTemplateOutlet="valueWithDecimals;context:{value:currencyExchangeResults.baseCost, currency: calculatedCurrencyExchangeDetails.toCurrency}"></ng-container>
+                  according to the Global Market
+                </div>
+
+                <div>
+                  <ng-container *ngTemplateOutlet="valueWithDecimals;context:{value:currencyExchangeResults.bankCost, currency: calculatedCurrencyExchangeDetails.toCurrency}"></ng-container>
+                   according to your Bank,
+                </div>
+                marking up an extra
+                <ng-container *ngTemplateOutlet="valueWithDecimals;context:{value:currencyExchangeResults.difference, currency: calculatedCurrencyExchangeDetails.toCurrency}"></ng-container>
+                 as a hidden fee.
+            </ng-container>
+          </div>
+          <div class="mt-4 info">
+            Please note that I'm using mock data - I'm sure your bank <i>wouldn't</i> treat you so harshly!
+          </div>
+        </app-card>
+      </div>
+      <div class="col-lg-6 mb-4 d-flex flex-grow-1">
+        <app-card *ngIf="historicalRequestHelper.status" @fadeInOut [disabled]="historicalRequestHelper.isPending" class="d-flex flex-grow-1 flex-column">
+          <h3 class="card-header mb-2">Historical Exchange Rates</h3>
+          <ng-container *ngIf="!historicalRequestHelper.isPending && historicalChartConfig.chartData; else spinner">
+            <app-custom-chart [config]="historicalChartConfig"></app-custom-chart>
+          </ng-container>
+        </app-card>
+      </div>
+    </div>
+  </app-card>
+</div>
+<ng-template #spinner let-size="size">
+  <div class="d-flex justify-content-center"><app-spinner [size]="36"></app-spinner></div>
+</ng-template>
+<ng-template #valueWithDecimals let-value="value" let-currency="currency">
+  <strong>{{value.wholePart}}</strong><span><ng-container *ngIf="value.decimalPart">.{{value.decimalPart}}</ng-container></span> <strong> {{currency.name}}(s)</strong>
+</ng-template>
+
+
+
+

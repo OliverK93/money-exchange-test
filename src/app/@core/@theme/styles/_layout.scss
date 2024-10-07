@@ -1,0 +1,33 @@
+@import './variables';
+
+.host {
+  background: lighten($primary, 30%);
+  background: linear-gradient(190deg, $primary 0%, lighten($primary, 30%) 100%);
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.icon {
+  width: $font-size-s;
+  height: $font-size-s;
+}
+
+label {
+  display: block;
+  font-size: $font-size-s;
+  font-weight: $font-weight-bold;
+  color: $primary;
+  margin-bottom: $font-size-xs;
+}
+
+.info {
+  background-color: $light;
+  font-size: $font-size-s;
+  color: $white;
+  padding: $font-size-base;
+}
+
+
+
+

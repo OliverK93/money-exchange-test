@@ -1,0 +1,118 @@
+@import './variables';
+
+@mixin btn-sizing {
+  @each $name, $sizing in $btn-sizing {
+    &-#{$name} {
+      padding: map-get($sizing, "padding-y") map-get($sizing, "padding-x");
+    }
+  }
+}
+
+@mixin btn-colors {
+  @each $name, $colors in $btn-colors {
+    &-#{$name} {
+      background-color: map-get($colors, "background-color");
+      color: map-get($colors, "color");
+      &:hover, &:active {
+        @if(map-get($colors, "hover") == "darken") {
+            background-color: darken(map-get($colors, "background-color"), 10%);
+            color: lighten(map-get($colors, "color"), 10%);
+        } @else {
+            background-color: lighten(map-get($colors, "background-color"), 10%);
+            color: darken(map-get($colors, "color"), 10%);
+        }
+      }
+    }
+  }
+}
+
+@mixin btn-outline-colors {
+  @each $name, $colors in $btn-colors {
+    &-#{$name} {
+      background-color: transparent;
+      border: $base-border-size solid map-get($colors, "background-color");
+      color: map-get($colors, "color");
+      &:hover, &:active {
+      }
+    }
+  }
+}
+
+button {
+  border: $base-border-size solid $secondary;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: $base-border-radius;
+}
+
+$btn-sizing: (
+  xs: (
+    "padding-x": 0.5rem,
+    "padding-y": 0.25rem,
+  ),
+  sm: (
+    "padding-x": 0.75rem,
+    "padding-y": 0.5rem,
+  ),
+  lg: (
+    "padding-x": 1.25rem,
+    "padding-y": 1rem,
+  ),
+  xl: (
+    "padding-x": 1.5rem,
+    "padding-y": 1.25rem,
+  ),
+);
+
+$btn-colors: (
+  primary: (
+    "background-color": map-get($theme-colors, primary),
+    "color": $white,
+    "hover": "lighten",
+  ),
+  secondary: (
+    "background-color": map-get($theme-colors, secondary),
+    "color": $black,
+    "hover": "darken"
+  ),
+  success: (
+    "background-color": map-get($theme-colors, success),
+    "color": $white,
+  ),
+  danger: (
+    "background-color": map-get($theme-colors, danger),
+    "color": $black,
+  ),
+  warning: (
+    "background-color": map-get($theme-colors, warning),
+    "color": $white,
+  ),
+  dark: (
+    "background-color": map-get($theme-colors, dark),
+    "color": $white,
+  ),
+  light: (
+    "background-color": map-get($theme-colors, light),
+    "color": $white,
+    "hover": "darken",
+  )
+);
+
+.btn {
+  @include btn-sizing;
+  @include btn-colors;
+}
+
+.btn-outline{
+  @include btn-sizing;
+  @include btn-outline-colors;
+}
+
+.btn-circle {
+  border-radius: 100px;
+  padding: 0.33rem 0.5rem;
+}
+
+
+

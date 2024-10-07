@@ -1,0 +1,46 @@
+$primary: #253e9b;
+$secondary: #c5c6c7;
+$red: #b50000;
+$blue: #202142;
+$dark: #202142;
+$light: #1d62bc;
+$green: #285f15;
+$yellow : #ebc934;
+$black: #000000;
+$white: #ffffff;
+
+$theme-colors: (
+  "primary" : $primary,
+  "secondary" : $secondary,
+  "success" : $green,
+  "danger" : $yellow,
+  "warning" : $red,
+  "dark": $dark,
+  "light": $light,
+);
+
+$font-size-base: 1rem !default;
+$font-size-xs: $font-size-base * 0.5;
+$font-size-s: $font-size-base * 0.75;
+$font-size-lg: $font-size-base * 1.25;
+$font-size-xl: $font-size-base * 1.5;
+
+$font-weight-base: 400;
+$font-weight-bold: 700;
+$font-weight-light: 300;
+
+$base-border-size: 1px;
+$base-border-radius: 8px;
+
+@mixin input-baseclass {
+  border: $base-border-size solid $secondary;
+  border-radius: $base-border-radius;
+  padding: 0.5rem 1rem;
+  transition: 0.2s;
+  &:active, &:focus, &:focus-visible, &:focus-within {
+    border-color: darken($secondary, 30%);
+    outline: none;
+  }
+}
+
+

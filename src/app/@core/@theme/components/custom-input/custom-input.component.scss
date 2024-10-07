@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  @include input-baseclass;
+}

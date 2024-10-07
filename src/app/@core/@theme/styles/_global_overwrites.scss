@@ -1,0 +1,10 @@
+@import './variables';
+
+
+.ng-dropdown-panel {
+  left: 0;
+  background: $white;
+  margin-top: 8px;
+  border: $base-border-size solid $secondary;
+  border-radius: $base-border-radius;
+}

@@ -1,0 +1,19 @@
+@mixin colors($property) {
+  @each $name, $hex in $theme-colors {
+    &-#{$name} {
+      $property: $hex;
+    }
+  }
+}
+
+.text {
+  @include colors('color');
+}
+
+.bg {
+  @include colors('background-color');
+}
+
+.border {
+  @include colors('border-color');
+}

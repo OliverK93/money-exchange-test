@@ -1,0 +1,16 @@
+@import 'app/@core/@theme/styles/buttons';
+@import 'app/@core/@theme/styles/colors';
+@import 'app/@core/@theme/styles/variables';
+@import 'app/@core/@theme/styles/layout';
+@import 'app/@core/@theme/styles/bootstrap-grid.css';
+@import 'app/@core/@theme/styles/global_overwrites';
+
+* {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}

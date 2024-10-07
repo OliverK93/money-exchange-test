@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+:host.card::ng-deep {
+  display: block;
+  padding: 2rem 3rem;
+  border: $base-border-size solid $secondary;
+  border-radius: $base-border-radius;
+  background-color: $white;
+  color: $dark;
+  box-shadow: 1px 1px darken($primary, 10%);
+  transition: 0.5s;
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}

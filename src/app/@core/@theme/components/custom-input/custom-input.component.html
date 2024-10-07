@@ -1,0 +1,5 @@
+<label>{{config.label}}</label>
+<input type="text"
+       [placeholder]="config.placeholder"
+       [ngModel]="formattedValue"
+       (ngModelChange)="onInputChange($event)">
